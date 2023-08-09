@@ -135,7 +135,7 @@ namespace Homework
             while (true)
             {
                 Console.WriteLine("\n\r**********************\n\r");
-                Console.Write("Please enter a 5 digit number: ");
+                Console.Write("Please enter a 5 digit number (-1 for the out): ");
 
                 string is_palindrome = Console.ReadLine();
                 
@@ -163,7 +163,6 @@ namespace Homework
                     break;
                 }  
             }
-            Console.ReadKey();
 
             // HOMEWORK 5 STOP
 
@@ -174,20 +173,46 @@ namespace Homework
             double stage_3 = 10.00;
             List<Double> times = new List<double>();
             List<Double> prices = new List<double>();
-            List<Double> cars = new List<double>();
+            List<string> cars = new List<string>();
+            double total_time = 0.0;
+            double total_price = 0.0;
 
             for (int i = 1; i <= 3; i++)
             {
-                Console.Write($"Enter time for {i} car : ");
-                double time = Convert.ToDouble(Console.ReadKey());
-                if (time <= 3)
+                double price = 0.0;
+                Console.Write("enter license plate: ");
+                string car = Console.ReadLine();
+                Console.Write("how many hours left: ");
+                double time = Convert.ToDouble(Console.ReadLine());
+
+                if (time <= 3.0)
                 {
-                    times.Add(time);
+                    price = stage_1;
+                }
+                else if ((time > 3.0) && (time <24.0))
+                {
+                    price = (time - 3) * stage_2 + stage_1;
 
                 }
-
+                else if (time == 24.0)
+                {
+                    price = stage_3;
+                }
+                times.Add(time);
+                prices.Add(price);
+                cars.Add(car);
             }
-            Console.WriteLine("Car  Time  Money");
+
+            Console.WriteLine("License       Hour    prices ");
+            for (int i = 0; i < cars.Count; i++)
+            {
+                Console.WriteLine ($" {cars[i]}       {times[i]}     {prices[i]}");
+                total_time += times[i];
+                total_price += prices[i];
+            }
+            Console.WriteLine("***********************\n\r");
+            Console.WriteLine($"Total         {total_time}        {total_price}");
+            Console.ReadKey();
         }
     }
 }

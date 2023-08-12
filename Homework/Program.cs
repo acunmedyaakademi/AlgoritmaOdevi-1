@@ -11,7 +11,7 @@ namespace Homework
         static void Main(string[] args)
         {
             // HOMEWORK 1 START
-
+            
             Console.Write("Enter three different number: ");
             string input =Console.ReadLine();
             var numbers = input.Split(' ');
@@ -70,7 +70,6 @@ namespace Homework
 
                 
             }
-            Console.ReadKey();
 
             // HOMEWORK 2 STOP
 
@@ -148,7 +147,7 @@ namespace Homework
                         if (list[0] == list[4] && list[1] == list[3])
                         {
                             Console.WriteLine("This is a palindrome number");
-
+                            
                         }
                         else
                         {
@@ -194,7 +193,7 @@ namespace Homework
                     price = (time - 3) * stage_2 + stage_1;
 
                 }
-                else if (time == 24.0)
+                else if (time >= 24.0)
                 {
                     price = stage_3;
                 }
